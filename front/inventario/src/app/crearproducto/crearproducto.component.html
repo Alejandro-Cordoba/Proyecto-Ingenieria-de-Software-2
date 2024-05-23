@@ -1,0 +1,42 @@
+<div>
+  <div>
+    <label>Nombre Producto:
+      <input #productoName />
+    </label>
+  </div>
+  <div>  
+    <label>Descripción Producto:
+      <input #descripcion />
+    </label>
+  </div>
+  <div>  
+    <label>Categoria Producto:
+      <input #categoria />
+    </label>
+  </div>
+  <div>   
+    <label>Precio Unitario:
+      <input #precioUni />
+    </label>
+  </div>
+  <div>  
+    <label>Precio mas Iva:
+      <input #precioIva />
+    </label>
+  </div>
+  <div>   
+    <label>Codigo Venta:
+      <input #codVenta />
+    </label>
+  </div> 
+  <div>   
+    <label>Cantidad:
+      <input #cantidad />
+    </label>
+  <div>   
+    <button (click)="add(productoName.value,descripcion.value,categoria.value,precioUni.value,precioIva.value,codVenta.value,cantidad.value);
+    ( productoName.value='')">
+      Guardar
+    </button>
+</div>
+  
