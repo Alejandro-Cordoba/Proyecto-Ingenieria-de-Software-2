@@ -19,7 +19,7 @@ export class ListaproductoComponent implements OnInit {
 
   getProductos(): void {
     this.productoService.getProductos()
-      .subscribe(productos => this.productos = productos.slice(1, 5));
+      .subscribe(productos => this.productos = productos.slice(0, productos.length));
   }
 
 }

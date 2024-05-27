@@ -1,27 +1,33 @@
-h1 {
-    font-size: 1.2em;
-    margin-bottom: 0;
-  }
-  h2 {
-    font-size: 2em;
-    margin-top: 0;
-    padding-top: 0;
-  }
-  nav a {
-    padding: 5px 10px;
-    text-decoration: none;
-    margin-top: 10px;
-    display: inline-block;
-    background-color: #eee;
-    border-radius: 4px;
-  }
-  nav a:visited, a:link {
-    color: #334953;
-  }
-  nav a:hover {
-    color: #039be5;
-    background-color: #CFD8DC;
-  }
-  nav a.active {
-    color: #039be5;
-  }
+.container {
+  max-width: 1000px; /* Ajusta el ancho máximo según tus necesidades */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  padding: 20px; /* Espaciado interno del contenedor */
+  background-color: #f0f0f0; /* Color de fondo del contenedor */
+  border-radius: 8px; /* Radio de borde del contenedor */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra del contenedor */
+}
+
+.container h1 {
+  margin-bottom: 20px; /* Espaciado inferior para el título */
+  text-align: center;
+}
+
+.container nav {
+  padding: 5px 10px;
+  text-decoration: none;
+  margin-top: 10px;
+  display: inline-block;
+  background-color: #336699;
+  border-radius: 4px;
+}
+
+.container nav a {
+  margin-right: 15px; /* Espaciado derecho entre los enlaces */
+  text-decoration: none; /* Quitar subrayado de los enlaces */
+  color: white; /* Color del texto de los enlaces */
+}
+
+.container nav a:hover {
+  background-color: #336699;
+  border-radius: 4px;
+}

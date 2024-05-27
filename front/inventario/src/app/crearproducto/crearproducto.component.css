@@ -1,43 +1,59 @@
-.productos {
-    margin: 0 0 2em 0;
-    list-style-type: none;
-    padding: 0;
-    width: 15em;
-  }
-  .productos li {
-    cursor: pointer;
-    position: relative;
-    left: 0;
-    background-color: #EEE;
-    margin: .5em;
-    padding: .3em 0;
-    height: 1.6em;
-    border-radius: 4px;
-  }
-  .productos li:hover {
-    color: #607D8B;
-    background-color: #DDD;
-    left: .1em;
-  }
-  .productos li.selected {
-    background-color: #CFD8DC;
-    color: white;
-  }
-  .productos li.selected:hover {
-    background-color: #BBD8DC;
-    color: white;
-  }
-  .productos .badge {
-    display: inline-block;
-    font-size: small;
-    color: white;
-    padding: 0.8em 0.7em 0 0.7em;
-    background-color:#405061;
-    line-height: 1em;
-    position: relative;
-    left: -1px;
-    top: -4px;
-    height: 1.8em;
-    margin-right: .8em;
-    border-radius: 4px 0 0 4px;
-  }
+/* Estilos para el formulario y el botón */
+.formulario-producto {
+  background-color: #f0f0f0; /* Color de fondo */
+  color: black; /* Color del texto */
+  padding: 20px; /* Espaciado interno */
+  border-radius: 5px; /* Borde redondeado */
+}
+
+.formulario-producto label {
+  display: block; /* Mostrar etiquetas como bloques */
+  margin-bottom: 10px; /* Espaciado inferior */
+}
+
+.formulario-producto input[type="text"],
+.formulario-producto input[type="number"],
+.formulario-producto select {
+  width: 100%; /* Ancho completo */
+  padding: 8px; /* Espaciado interno */
+  margin-bottom: 10px; /* Espaciado inferior */
+  border-radius: 4px; /* Borde redondeado */
+}
+
+.btn-success {
+  background-color: #336699; /* Color de fondo del botón de éxito */
+  color: white; /* Color del texto del botón de éxito */
+  padding: 10px 20px; /* Espaciado interno */
+  border-radius: 4px; /* Borde redondeado */
+  cursor: pointer; /* Cambiar el cursor al pasar el ratón */
+}
+
+.btn-success:hover {
+  background-color: #336699; /* Cambiar color al pasar el ratón sobre el botón de éxito */
+}
+
+.btn-disabled {
+  background-color: #f0f0f0; /* Color de fondo del botón deshabilitado */
+  color: black; /* Color del texto del botón deshabilitado */
+  padding: 10px 20px; /* Espaciado interno */
+  border-radius: 4px; /* Borde redondeado */
+  cursor: not-allowed; /* Cambiar el cursor a no permitido */
+}
+
+
+.alert-danger {
+  color: white; /* Color del texto */
+  background-color: #dc3545; /* Color de fondo */
+  padding: 5px 10px; /* Espaciado interno */
+  border-radius: 4px; /* Borde redondeado */
+  margin-top: 5px; /* Espaciado superior */
+}
+
+.mensaje-exito {
+  background-color: #d4edda; /* Color de fondo verde claro */
+  border-color: #c3e6cb; /* Color del borde verde claro */
+  color: #155724; /* Color del texto verde oscuro */
+  padding: 10px; /* Espacio alrededor del contenido del mensaje */
+  border-radius: 5px; /* Bordes redondeados */
+  margin-top: 10px; /* Espacio superior */
+}

@@ -1,42 +1,97 @@
-<div>
+<div class="formulario-producto">
   <div>
     <label>Nombre Producto:
-      <input #productoName />
+      <input type="text" [formControl]="nombreControl" #nombre (input)="checkFields()"/>
+      <div *ngIf="nombreControl.invalid && (nombreControl.dirty || nombreControl.touched)" class="alert alert-danger">
+        <div *ngIf="nombreControl.errors?.required">
+          Campo es obligatorio.
+        </div>
+        <div *ngIf="nombreControl.errors?.minlength">
+          El campo debe tener al menos 10 caracteres.
+        </div>
+        <div *ngIf="nombreControl.errors?.maxlength">
+          El campo debe tener como máximo 20 caracteres.
+        </div>
+      </div>
     </label>
   </div>
-  <div>  
+  <div>
     <label>Descripción Producto:
-      <input #descripcion />
+      <input type="text" [formControl]="descripcionControl" #descripcion (input)="checkFields()"/>
+      <div *ngIf="descripcionControl.invalid && (descripcionControl.dirty || descripcionControl.touched)" class="alert alert-danger">
+        <div *ngIf="descripcionControl.errors?.required">
+          Campo es obligatorio.
+        </div>
+        <div *ngIf="descripcionControl.errors?.minlength">
+          El campo debe tener al menos 10 caracteres.
+        </div>
+        <div *ngIf="descripcionControl.errors?.maxlength">
+          El campo debe tener como máximo 30 caracteres.
+        </div>
+      </div>
     </label>
   </div>
-  <div>  
+  <div>
     <label>Categoria Producto:
-      <input #categoria />
+      <select #categoria [(ngModel)]="categoriaSeleccionada" (input)="checkFields()" (input)="checkFields()">
+        <option value="" disabled selected>otros</option>
+        <option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</option>
+      </select>
     </label>
   </div>
-  <div>   
-    <label>Precio Unitario:
-      <input #precioUni />
+  <div>
+    <label>Precio Unitario $:
+      <input type="number" [formControl]="precioUniControl" (input)="sumarIva()" #precioUni>
+    </label>
+    <div *ngIf="precioUniControl.invalid && (precioUniControl.dirty || precioUniControl.touched)" class="alert alert-danger" (input)="checkFields()">
+      <div *ngIf="precioUniControl.errors?.required">
+        Campo es obligatorio.
+      </div>
+      <div *ngIf="precioUniControl.errors?.pattern">
+        El precio unitario no debe ser valores negativos.
+      </div>
+      <div *ngIf="precioUniControl.errors?.min">
+        El valor mínimo permitido es 800,000 pesos.
+      </div>
+      <div *ngIf="precioUniControl.errors?.max">
+        El valor máximo permitido es 30,000,000 pesos.
+      </div>
+    </div>
+  </div>
+  <div>
+    <label>Precio mas Iva $:
+      <input type="number" [value]="precioConIva.toFixed(0)" placeholder="Precio con IVA" readonly #precioIva>
     </label>
   </div>
-  <div>  
-    <label>Precio mas Iva:
-      <input #precioIva />
-    </label>
-  </div>
-  <div>   
+  <div>
     <label>Codigo Venta:
-      <input #codVenta />
+      <input type="number" [formControl]="codigoVentaControl" #codVenta (input)="checkFields()" readonly/>
     </label>
-  </div> 
-  <div>   
+    <div *ngIf="codigoVentaControl.invalid && (codigoVentaControl.dirty || codigoVentaControl.touched)" class="alert alert-danger">
+      <div *ngIf="codigoVentaControl.errors?.required">
+        Campo es obligatorio.
+      </div>
+      <div *ngIf="codigoVentaControl.errors?.pattern">
+        El codigo de venta no debe ser valores negativos.
+      </div>
+    </div>
+  </div>
+  <div>
     <label>Cantidad:
-      <input #cantidad />
+      <input type="number" [formControl]="cantidadControl" #cantidad (input)="checkFields()"/>
     </label>
-  <div>   
-    <button (click)="add(productoName.value,descripcion.value,categoria.value,precioUni.value,precioIva.value,codVenta.value,cantidad.value);
-    ( productoName.value='')">
-      Guardar
-    </button>
-</div>
+    <div *ngIf="cantidadControl.invalid && (cantidadControl.dirty || cantidadControl.touched)" class="alert alert-danger">
+      <div *ngIf="cantidadControl.errors?.required">
+        Campo es obligatorio.
+      </div>
+      <div *ngIf="cantidadControl.errors?.pattern">
+        La cantidad no debe ser valores negativos.
+      </div>
+    </div>
+  </div>
   
+  <button [class]="camposCompletos ? 'btn-success' : 'btn-disabled'" (click)="add(nombre.value, descripcion.value, categoria.value, precioUni.value, precioIva.value, codVenta.value, cantidad.value);">Guardar</button>
+  <div *ngIf="mostrarMensaje" class="mensaje-exito">
+    {{mensajeRespuesta}}
+  </div>
+</div>

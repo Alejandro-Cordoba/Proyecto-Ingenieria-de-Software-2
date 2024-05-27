@@ -11,6 +11,7 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { BuscarproductoComponent } from './buscarproducto/buscarproducto.component';
 import { DetalleproductoComponent } from './detalleproducto/detalleproducto.component';
 import { CrearproductoComponent } from './crearproducto/crearproducto.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,10 +27,7 @@ import { CrearproductoComponent } from './crearproducto/crearproducto.component'
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

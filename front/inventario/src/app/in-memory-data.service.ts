@@ -9,7 +9,7 @@ export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const productos = [
       {
-        id: 1, name: 'TELEVISOR',
+        productoid: 1, nombre: 'TELEVISOR',
         descripcion: 'T',
         categoria: 'c',
         preciounitario: 'c',
@@ -18,7 +18,7 @@ export class InMemoryDataService implements InMemoryDbService {
         stockactual: '0'
       },
       {
-        id: 2, name: 'HORNO',
+        productoid: 2, nombre: 'HORNO',
         descripcion: '',
         categoria: '',
         preciounitario: '',
@@ -27,7 +27,7 @@ export class InMemoryDataService implements InMemoryDbService {
         stockactual: ''
       },
       {
-        id: 3, name: 'CELULAR',
+        productoid: 3, nombre: 'CELULAR',
         descripcion: '',
         categoria: '',
         preciounitario: '',
@@ -36,7 +36,7 @@ export class InMemoryDataService implements InMemoryDbService {
         stockactual: ''
       },
       {
-        id: 4, name: 'TECLADO',
+        productoid: 4, nombre: 'TECLADO',
         descripcion: '',
         categoria: '',
         preciounitario: '',
@@ -45,7 +45,7 @@ export class InMemoryDataService implements InMemoryDbService {
         stockactual: ''
       },
       {
-        id: 5, name: 'COMPUTADOR',
+        productoid: 5, nombre: 'COMPUTADOR',
         descripcion: '',
         categoria: '',
         preciounitario: '',
@@ -54,7 +54,7 @@ export class InMemoryDataService implements InMemoryDbService {
         stockactual: ''
       },
       {
-        id: 6, name: 'TALADRO',
+        productoid: 6, nombre: 'TALADRO',
         descripcion: '',
         categoria: '',
         preciounitario: '',
@@ -63,7 +63,7 @@ export class InMemoryDataService implements InMemoryDbService {
         stockactual: ''
       },
       {
-        id: 7, name: 'AUDIFONOS',
+        productoid: 7, nombre: 'AUDIFONOS',
         descripcion: '',
         categoria: '',
         preciounitario: '',
@@ -72,7 +72,7 @@ export class InMemoryDataService implements InMemoryDbService {
         stockactual: ''
       },
       {
-        id: 8, name: 'CARGADOR',
+        productoid: 8, nombre: 'CARGADOR',
         descripcion: '',
         categoria: '',
         preciounitario: '',
@@ -81,7 +81,7 @@ export class InMemoryDataService implements InMemoryDbService {
         stockactual: ''
       },
       {
-        id: 9, name: 'CONTROL',
+        productoid: 9, nombre: 'CONTROL',
         descripcion: '',
         categoria: '',
         preciounitario: '',
@@ -90,7 +90,7 @@ export class InMemoryDataService implements InMemoryDbService {
         stockactual: ''
       },
       {
-        id: 10, name: 'FICHAS',
+        productoid: 10, nombre: 'FICHAS',
         descripcion: '',
         categoria: '',
         preciounitario: '',
@@ -102,6 +102,6 @@ export class InMemoryDataService implements InMemoryDbService {
     return {productos};
   }
   genId(productos: Producto[]): number {
-    return productos.length > 0 ? Math.max(...productos.map(hero => hero.id)) + 1 : 50;
+    return productos.length > 0 ? Math.max(...productos.map(hero => hero.productoid)) + 1 : 50;
   }
 }

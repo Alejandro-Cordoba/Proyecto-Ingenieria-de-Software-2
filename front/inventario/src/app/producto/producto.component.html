@@ -1,20 +1,87 @@
-<h2>Mis Productos</h2>
-<ul class="productos">
-  <li *ngFor="let producto of productos"
-    [class.selected]="producto === selectedProducto"
-    (click)="onSelect(producto)">
-    <span class="badge">{{producto.id}}</span> {{producto.name}} {{producto.descripcion}}
-  </li>
-</ul>
-
-<div *ngIf="selectedProducto">
-  <h2>Detalles de: {{selectedProducto.name | uppercase}}</h2>
-  <div><span>id: </span>{{selectedProducto.id}}</div>
-  <div><span>Nombre Producto: </span>{{selectedProducto.name}}</div>
-  <div><span>Descripción Producto: </span>{{selectedProducto.descripcion}}</div>
-  <div><span>Categoria Producto: </span>{{selectedProducto.categoria}}</div>
-  <div><span>Precio Unitario: </span>{{selectedProducto.preciounitario}}</div>
-  <div><span>Precio mas Iva: </span>{{selectedProducto.preciomasiva}}</div>
-  <div><span>Codigo Venta: </span>{{selectedProducto.codigoventa}}</div>
-  <div><span>Cantidad: </span>{{selectedProducto.stockactual}}</div>
+<h1>MIS PRODUCTOS</h1>
+<table>
+  <tr>
+    <td>
+      Buscar
+    </td>
+    <td>
+      <input type="text" [(ngModel)]="filtro" placeholder="Escribir el nombre del producto o codigo del producto" (input)="filtrarProductos()">
+    </td>
+  </tr>
+</table>
+<br>
+<br>
+<table *ngIf="productosFiltrados && productosFiltrados.length > 0">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Categoria Producto</th>
+      <th>Precio Unitario</th>
+      <th>Precio IVA </th>
+      <th>Codigo Venta</th>
+      <th>Cantidad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let producto of productosFiltrados"
+        [class.selected]="producto === selectedProducto"
+        (click)="onSelect(producto)">
+      <td><span class="badge">{{producto.productoid}}</span></td>
+      <td>{{producto.nombre}}</td>
+      <td>{{producto.descripcion}}</td>
+      <td>{{producto.categoria}}</td>
+      <td>$ {{producto.preciounitario | number:'1.2-2'}}</td>
+      <td>$ {{producto.preciomasiva | number:'1.2-2'}}</td>
+      <td>{{producto.codigoventa}}</td>
+      <td>{{producto.stockactual}}</td>
+  </tbody>
+</table>
+<div *ngIf="!productosFiltrados || productosFiltrados.length === 0" class="mensaje-exito" class="alert alert-success">
+  No hay productos disponibles.
 </div>
+<br>
+<br>
+<table *ngIf="selectedProducto">
+  <thead>
+    <tr>
+      <th class="badge">DETALLES DEL PRODUCTO</th>
+      <th class="badge"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="badge">Producto ID</span></td>
+      <td>{{selectedProducto.productoid}}</td>
+    </tr>
+    <tr>
+      <td><span class="badge">Nombre</span></td>
+      <td>{{selectedProducto.nombre}}</td>
+    </tr>
+    <tr>
+      <td><span class="badge">Descripción</span></td>
+      <td>{{selectedProducto.descripcion}}</td>
+    </tr>
+    <tr>
+      <td><span class="badge">Categoria Producto</span></td>
+      <td>{{selectedProducto.categoria}}</td>
+    </tr>
+    <tr>
+      <td><span class="badge">Precio Unitario</span></td>
+      <td>{{selectedProducto.preciounitario}}</td>
+    </tr>
+    <tr>
+      <td><span class="badge">Precio mas Iva</span></td>
+      <td>{{selectedProducto.preciomasiva}}</td>
+    </tr>
+    <tr>
+      <td><span class="badge">Codigo Venta</span></td>
+      <td>{{selectedProducto.codigoventa}}</td>
+    </tr>
+    <tr>
+      <td><span class="badge">Cantidad</span></td>
+      <td>{{selectedProducto.stockactual}}</td>
+    </tr>
+  </tbody>
+</table>

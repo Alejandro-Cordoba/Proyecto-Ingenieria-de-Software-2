@@ -1,5 +1,8 @@
-package com.inventory.products;
+package com.inventory.products.controller;
 
+import com.inventory.products.ProductosDTO;
+import com.inventory.products.entity.Product;
+import com.inventory.products.services.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +15,7 @@ public class ProductsController {
     @Autowired
     private ProductsService productsService;
     @PostMapping
-    public Product createProducts(@RequestBody Product product) {
+    public Product createProducts(@RequestBody ProductosDTO product) {
         return productsService.createProducts(product);
     }
     @GetMapping

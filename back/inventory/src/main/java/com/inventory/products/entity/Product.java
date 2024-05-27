@@ -1,4 +1,4 @@
-package com.inventory.products;
+package com.inventory.products.entity;
 
 import jakarta.persistence.*;
 
@@ -78,6 +78,9 @@ public class Product {
 
     public void setStockactual(int stockactual) {
         this.stockactual = stockactual;
+    }
+
+    public Product() {
     }
 }
 

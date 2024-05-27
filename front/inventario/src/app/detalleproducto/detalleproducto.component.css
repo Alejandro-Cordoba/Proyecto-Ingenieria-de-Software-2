@@ -1,29 +1,7 @@
-label {
-    display: inline-block;
-    width: 3em;
-    margin: .5em 0;
-    color: #607D8B;
-    font-weight: bold;
+.detalle-producto {
+    background-color: #336699; /* Color de fondo del contenedor */
+    color: white; /* Color del texto dentro del contenedor */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 5px; /* Radio del borde */
   }
-  input {
-    height: 2em;
-    font-size: 1em;
-    padding-left: .4em;
-  }
-  button {
-    margin-top: 20px;
-    font-family: Arial;
-    background-color: #eee;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  button:hover {
-    background-color: #cfd8dc;
-  }
-  button:disabled {
-    background-color: #eee;
-    color: #ccc;
-    cursor: auto;
-  }
+  

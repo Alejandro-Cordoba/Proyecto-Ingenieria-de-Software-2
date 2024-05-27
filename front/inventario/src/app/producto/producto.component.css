@@ -1,43 +1,46 @@
-.productos {
-    margin: 0 0 2em 0;
-    list-style-type: none;
-    padding: 0;
-    width: 15em;
+tr.selected {
+    background-color: lightblue;
   }
-  .productos li {
-    cursor: pointer;
-    position: relative;
-    left: 0;
-    background-color: #EEE;
-    margin: .5em;
-    padding: .3em 0;
-    height: 1.6em;
-    border-radius: 4px;
-  }
-  .productos li:hover {
-    color: #607D8B;
-    background-color: #DDD;
-    left: .1em;
-  }
-  .productos li.selected {
-    background-color: #CFD8DC;
-    color: white;
-  }
-  .productos li.selected:hover {
-    background-color: #BBD8DC;
-    color: white;
-  }
-  .productos .badge {
-    display: inline-block;
-    font-size: small;
-    color: white;
-    padding: 0.8em 0.7em 0 0.7em;
-    background-color:#405061;
-    line-height: 1em;
-    position: relative;
-    left: -1px;
-    top: -4px;
-    height: 1.8em;
-    margin-right: .8em;
-    border-radius: 4px 0 0 4px;
-  }
+
+  /* Estilos para la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #336699; /* Color de fondo de las celdas de encabezado */
+  color: white; /* Color del texto de las celdas de encabezado */
+}
+
+tr:hover {
+  background-color: #f2f2f2; /* Color de fondo al pasar el ratón sobre una fila */
+}
+
+/* Estilos para el mensaje de éxito */
+.mensaje-exito {
+  padding: 10px;
+  background-color: #dff0d8; /* Color de fondo de éxito */
+  color: #3c763d; /* Color del texto de éxito */
+  border: 1px solid #d6e9c6; /* Borde de éxito */
+  border-radius: 4px; /* Radio del borde de éxito */
+  margin-top: 10px; /* Espaciado superior */
+}
+
+.detalle-producto {
+  background-color: #f2f2f2; /* Color de fondo del contenedor */
+  color: black; /* Color del texto dentro del contenedor */
+  padding: 20px; /* Espaciado interno */
+  border-radius: 5px; /* Radio del borde */
+}
+
+h1 {
+  margin-bottom: 20px; /* Espaciado inferior para el título */
+  text-align: center;
+}

@@ -12,7 +12,7 @@ import { MessageService } from './message.service';
 })
 export class ProductoService {
 
-  private productoUrl = 'api/productos';
+  private productoUrl = 'http://localhost:8080/Products';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -52,7 +52,7 @@ export class ProductoService {
 
   addProducto(producto: Producto): Observable<Producto> {
     return this.http.post<Producto>(this.productoUrl, producto, this.httpOptions).pipe(
-      tap((newProducto: Producto) => this.log(`added producto w/ id=${newProducto.id}`)),
+      tap((newProducto: Producto) => console.log(`added producto w/ id=${newProducto.productoid}`)),
       catchError(this.handleError<Producto>('addProducto'))
     );
   }
