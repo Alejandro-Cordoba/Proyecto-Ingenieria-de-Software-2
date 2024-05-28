@@ -1,7 +1,7 @@
 <div class="formulario-producto">
   <div>
     <label>Nombre Producto:
-      <input type="text" oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '')" [formControl]="nombreControl"
+      <input type="text" oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g,)" [formControl]="nombreControl"
         #nombre (input)="checkFields()" />
       <div *ngIf="nombreControl.invalid && (nombreControl.dirty || nombreControl.touched)" class="alert alert-danger">
         <div *ngIf="nombreControl.errors?.required">
@@ -18,7 +18,7 @@
   </div>
   <div>
     <label>Descripción Producto:
-      <input type="text" oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '')"
+      <input type="text" oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '')"
         [formControl]="descripcionControl" #descripcion (input)="checkFields()" />
       <div *ngIf="descripcionControl.invalid && (descripcionControl.dirty || descripcionControl.touched)"
         class="alert alert-danger">
