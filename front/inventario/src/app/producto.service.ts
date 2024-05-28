@@ -44,8 +44,8 @@ export class ProductoService {
     }
     return this.http.get<Producto[]>(`${this.productoUrl}/?name=${term}`).pipe(
       tap(x => x.length ?
-         this.log(`found productos matching "${term}"`) :
-         this.log(`no productos matching "${term}"`)),
+        this.log(`found productos matching "${term}"`) :
+        this.log(`no productos matching "${term}"`)),
       catchError(this.handleError<Producto[]>('searchProductos', []))
     );
   }

@@ -1,6 +1,6 @@
 package com.inventory.products.services;
 
-import com.inventory.products.ProductosDTO;
+import com.inventory.products.dto.ProductosDTO;
 import com.inventory.products.entity.Product;
 import com.inventory.products.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;

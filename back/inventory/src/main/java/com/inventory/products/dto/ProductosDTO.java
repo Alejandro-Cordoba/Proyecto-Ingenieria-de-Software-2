@@ -1,4 +1,4 @@
-package com.inventory.products;
+package com.inventory.products.dto;
 
 public class ProductosDTO {
     private Long productoid;

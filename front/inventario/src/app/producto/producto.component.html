@@ -5,7 +5,8 @@
       Buscar
     </td>
     <td>
-      <input type="text" [(ngModel)]="filtro" placeholder="Escribir el nombre del producto o codigo del producto" (input)="filtrarProductos()">
+      <input type="text" [(ngModel)]="filtro" placeholder="Escribir el nombre del producto o codigo del producto"
+        (input)="filtrarProductos()">
     </td>
   </tr>
 </table>
@@ -25,9 +26,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let producto of productosFiltrados"
-        [class.selected]="producto === selectedProducto"
-        (click)="onSelect(producto)">
+    <tr *ngFor="let producto of productosFiltrados" [class.selected]="producto === selectedProducto"
+      (click)="onSelect(producto)">
       <td><span class="badge">{{producto.productoid}}</span></td>
       <td>{{producto.nombre}}</td>
       <td>{{producto.descripcion}}</td>

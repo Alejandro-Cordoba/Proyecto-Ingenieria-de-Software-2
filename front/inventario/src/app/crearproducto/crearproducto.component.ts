@@ -1,21 +1,15 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductoService } from '../producto.service';
 import { Producto } from '../producto/producto';
-import { FormControl, NgForm, Validators } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-crearproducto',
   templateUrl: './crearproducto.component.html',
   styleUrls: ['./crearproducto.component.css']
 })
-export class CrearproductoComponent implements OnInit {
-  productos : Producto [] = [];
-  categorias: string[] = ['Televisores', 'Computadores', 'Celulares'];
-  categoriaSeleccionada: string;
-  mostrarMensaje: boolean;
-  mensajeRespuesta;
-  mostrarBoton = true;
 
+export class CrearproductoComponent implements OnInit {
   @ViewChild('nombre') nombreInput: any;
   @ViewChild('descripcion') descripcionInput: any;
   @ViewChild('categoria') categoriaInput: any;
@@ -23,12 +17,22 @@ export class CrearproductoComponent implements OnInit {
   @ViewChild('precioIva') precioIvaInput: any;
   @ViewChild('codVenta') codVentaInput: any;
   @ViewChild('cantidad') cantidadInput: any;
+
+  productos: Producto[] = [];
+  categorias: string[] = ['otros', 'Televisores', 'Computadores', 'Celulares'];
+
+  categoriaSeleccionada: string;
+  mostrarMensaje: boolean;
+  mensajeRespuesta;
+  mostrarBoton = true;
   camposCompletos: boolean = false;
+  precioConIva: number = 0;
+  iva = 0.19;
 
   nombreControl = new FormControl('', [
     Validators.required,
     Validators.minLength(10),
-    Validators.maxLength(20)
+    Validators.maxLength(20),
   ]);
 
   descripcionControl = new FormControl('', [
@@ -40,11 +44,9 @@ export class CrearproductoComponent implements OnInit {
   precioUniControl = new FormControl('', [
     Validators.required,
     Validators.pattern('^[0-9]+$'),
-    Validators.min(800000),
+    Validators.min(200000),
     Validators.max(30000000)
   ]);
-  precioConIva: number = 0;
-  iva = 0.19; // 16% de IVA (puedes ajustar este valor según el país o región)
 
   sumarIva() {
     const precioSinIva = parseFloat(this.precioUniControl.value);
@@ -64,33 +66,34 @@ export class CrearproductoComponent implements OnInit {
   constructor(private productoService: ProductoService) { }
 
   ngOnInit(): void {
-    this.generarCodigoAleatorio()
+    this.generarCodigoProducto()
   }
 
-  generarCodigoAleatorio() {
-    // Generar un número aleatorio entre 1000 y 9999
+  generarCodigoProducto() {
     const codigoAleatorio = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
-    // Asignar el valor aleatorio al control del formulario
     this.codigoVentaControl.setValue(codigoAleatorio);
   }
 
   checkFields() {
     if ((this.nombreControl.errors || this.descripcionControl.errors || this.precioUniControl.errors || this.cantidadControl.errors)) {
       this.camposCompletos = false;
-  } else {
+    } else {
       this.camposCompletos = true;
-  }
+    }
   }
 
-  add(nombre: string,descripcion: string,categoria: string,preciounitario: string,preciomasiva: string,codigoventa: string,stockactual: string): void {
+  add(nombre: string, descripcion: string, categoria: string, preciounitario: string, preciomasiva: string, codigoventa: string, stockactual: string): void {
     nombre = nombre.trim();
-    if (!nombre) { return; }
-    this.productoService.addProducto({ nombre, descripcion,categoria,preciounitario,preciomasiva,codigoventa,stockactual } as unknown as Producto)
+    if (!nombre) {
+      this.mostrarMensajeExito(false);
+      return;
+    }
+    this.productoService.addProducto({ nombre, descripcion, categoria, preciounitario, preciomasiva, codigoventa, stockactual } as unknown as Producto)
       .subscribe(productos => {
         this.productos.push(productos);
       });
-      this.mostrarMensajeExito();
-      this.clearFields();
+    this.mostrarMensajeExito(true);
+    this.clearFields();
   }
 
   clearFields() {
@@ -106,11 +109,16 @@ export class CrearproductoComponent implements OnInit {
   }
 
   // Ocultar el mensaje después de 3 segundos
-  mostrarMensajeExito() {
+  mostrarMensajeExito(p0: boolean) {
     this.mostrarMensaje = true;
-    this.mensajeRespuesta='Guardado exitoso'
+    if (p0 == true) {
+      this.mensajeRespuesta = 'Guardado exitoso'
+    } else {
+      this.mensajeRespuesta = 'Error Guardando Informacion'
+    }
+    this.mensajeRespuesta = 'Guardado exitoso'
     setTimeout(() => {
       this.mostrarMensaje = false;
-    }, 3000); 
-  } 
+    }, 3000);
+  }
 }

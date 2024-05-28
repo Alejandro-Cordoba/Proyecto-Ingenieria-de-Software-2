@@ -1,7 +1,10 @@
 .detalle-producto {
-    background-color: #336699; /* Color de fondo del contenedor */
-    color: white; /* Color del texto dentro del contenedor */
-    padding: 20px; /* Espaciado interno */
-    border-radius: 5px; /* Radio del borde */
-  }
-  
+  background-color: #336699;
+  /* Color de fondo del contenedor */
+  color: white;
+  /* Color del texto dentro del contenedor */
+  padding: 20px;
+  /* Espaciado interno */
+  border-radius: 5px;
+  /* Radio del borde */
+}

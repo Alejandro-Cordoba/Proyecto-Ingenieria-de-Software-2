@@ -14,7 +14,7 @@ export class BuscarproductoComponent implements OnInit {
   productos$: Observable<Producto[]>;
   private searchTerms = new Subject<string>();
 
-  constructor(private productoService: ProductoService) {}
+  constructor(private productoService: ProductoService) { }
 
   search(term: string): void {
     this.searchTerms.next(term);

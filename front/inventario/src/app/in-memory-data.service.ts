@@ -99,7 +99,7 @@ export class InMemoryDataService implements InMemoryDbService {
         stockactual: ''
       }
     ];
-    return {productos};
+    return { productos };
   }
   genId(productos: Producto[]): number {
     return productos.length > 0 ? Math.max(...productos.map(hero => hero.productoid)) + 1 : 50;

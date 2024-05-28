@@ -17,7 +17,7 @@ export class DetalleproductoComponent implements OnInit {
     private route: ActivatedRoute,
     private productoService: ProductoService,
     private location: Location
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getProducto;
@@ -27,7 +27,7 @@ export class DetalleproductoComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.productoService.getProducto(id)
       .subscribe(producto => this.producto = producto);
-      this.producto
+    this.producto
   }
 
   goBack(): void {

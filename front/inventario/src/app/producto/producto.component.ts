@@ -55,5 +55,5 @@ export class ProductoComponent implements OnInit {
   onSelect(producto: Producto): void {
     this.selectedProducto = producto;
   }
-  
+
 }
